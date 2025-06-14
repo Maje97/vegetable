@@ -2,7 +2,7 @@ package com.project.vegetable.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +21,7 @@ public class Customer {
     private String email;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Order> orders = new ArrayList<>();
 
     // Constructors
