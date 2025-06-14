@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "Sven Svensson",
+    "address": "Example 123, 45678 Example",
+    "email": "sven@example.com",
+    "orders": [
+      {"orderId": 1}
+    ]
+  }
+]

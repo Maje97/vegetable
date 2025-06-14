@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Leafy greens"
+  },
+  {
+    "id": 2,
+    "name": "Root vegetables"
+  },
+  {
+    "id": 3,
+    "name": "Bulb vegetables"
+  },
+  {
+    "id": 4,
+    "name": "Stem vegetables"
+  },
+  {
+    "id": 5,
+    "name": "Flower vegetables"
+  },
+  {
+    "id": 6,
+    "name": "Fruit vegetables"
+  },
+  {
+    "id": 7,
+    "name": "Seed vegetables"
+  },
+  {
+    "id": 8,
+    "name": "Mushrooms"
+  }
+]

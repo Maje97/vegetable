@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "description": "Fresh organic tomatoes",
+    "price": 1.50,
+    "stockQuantity": 100,
+    "categoryName": "Fruit vegetables"
+  },
+  {
+    "id": 2,
+    "name": "Spinach",
+    "description": "Fresh organic spinach",
+    "price": 3.50,
+    "stockQuantity": 100,
+    "categoryName": "Leafy greens"
+  },
+  {
+    "id": 3,
+    "name": "Potato",
+    "description": "Organic potatoes",
+    "price": 1.00,
+    "stockQuantity": 100,
+    "categoryName": "Root vegetables"
+  },
+  {
+    "id": 4,
+    "name": "Garlic",
+    "description": "Organic garlic",
+    "price": 2.50,
+    "stockQuantity": 100,
+    "categoryName": "Bulb vegetables"
+  },
+  {
+    "id": 5,
+    "name": "Rhubarb",
+    "description": "Fresh organic rhubarbs",
+    "price": 3.00,
+    "stockQuantity": 100,
+    "categoryName": "Stem vegetables"
+  },
+  {
+    "id": 6,
+    "name": "Cauliflower",
+    "description": "Fresh organic cauliflowers",
+    "price": 5.25,
+    "stockQuantity": 100,
+    "categoryName": "Flower vegetables"
+  },
+  {
+    "id": 7,
+    "name": "Cucumber",
+    "description": "Fresh organic cucumbers",
+    "price": 1.25,
+    "stockQuantity": 100,
+    "categoryName": "Fruit vegetables"
+  },
+  {
+    "id": 8,
+    "name": "Peas",
+    "description": "Fresh organic peas",
+    "price": 0.50,
+    "stockQuantity": 100,
+    "categoryName": "Seed vegetables"
+  },
+  {
+    "id": 9,
+    "name": "Shiitake mushroom",
+    "description": "Fresh organic shiitake",
+    "price": 2.00,
+    "stockQuantity": 100,
+    "categoryName": "Mushrooms"
+  }
+]
