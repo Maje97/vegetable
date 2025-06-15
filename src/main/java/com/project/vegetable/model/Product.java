@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,10 +14,12 @@ public class Product {
     @NotEmpty()
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     private Float price;
 
+    @Column(name = "stock_quantity")
     private Integer stockQuantity;
 
     @ManyToOne(fetch = FetchType.LAZY)

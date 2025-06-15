@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
     @EmbeddedId
     private OrderItemId id;
 
     private Integer quantity;
 
+    @Column(name = "price_at_purchase")
     private Float priceAtPurchase;
 
     @MapsId("orderId")

@@ -8,14 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "\"order\"")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "total_amount")
     private Double totalAmount;
 
+    @Column(name = "order_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -72,11 +74,8 @@ public class Order {
     }
 
     public void addOrderItem(OrderItem orderItem) {
-        orderItem.setOrder(this);
-        if (orderItem.getId() == null) {
-            orderItem.setId(new OrderItemId(this.id, orderItem.getProduct().getId()));
-        }
         orderItems.add(orderItem);
+        orderItem.setOrder(this);
     }
 
     public void removeOrderItem(OrderItem orderItem) {
