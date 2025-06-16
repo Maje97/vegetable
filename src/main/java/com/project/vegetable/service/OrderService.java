@@ -3,10 +3,7 @@ package com.project.vegetable.service;
 import com.project.vegetable.exception.InsufficientStockException;
 import com.project.vegetable.exception.OrderNotFoundException;
 import com.project.vegetable.exception.OrderItemNotFoundException;
-import com.project.vegetable.model.Customer;
-import com.project.vegetable.model.Order;
-import com.project.vegetable.model.OrderItem;
-import com.project.vegetable.model.Product;
+import com.project.vegetable.model.*;
 import com.project.vegetable.repository.OrderRepository;
 import com.project.vegetable.repository.OrderItemRepository;
 import jakarta.transaction.Transactional;
@@ -43,7 +40,13 @@ public class OrderService {
                 throw new IllegalArgumentException("Quantity must be more than zero.");
             }
 
-            Product product = productService.getProductById(item.getProductId());
+            Long productId = item.getProduct() != null ? item.getProduct().getId() : null;
+            if (productId == null) {
+                throw new IllegalArgumentException("Product ID is missing in order item.");
+            }
+
+            Product product = productService.getProductById(productId);
+            item.setProduct(product);
 
             if (product.getStockQuantity() < item.getQuantity()) {
                 throw new InsufficientStockException(
@@ -68,9 +71,22 @@ public class OrderService {
 
         Order order = new Order();
         order.setCustomer(customer);
-        order.setOrderItems(items);
         order.setTotalAmount(total);
         order.setOrderDate(LocalDateTime.now());
+
+        order = orderRepository.save(order);
+
+        for (OrderItem item : items) {
+            Product product = item.getProduct(); // make sure this is already fetched and not null
+            if (product == null || product.getId() == null) {
+                throw new IllegalArgumentException("Product must be set and persisted before creating order item.");
+            }
+
+            item.setOrder(order);
+            item.setId(new OrderItemId(order.getId(), product.getId()));
+        }
+
+        order.setOrderItems(items);
 
         return orderRepository.save(order);
     }

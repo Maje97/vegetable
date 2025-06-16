@@ -18,3 +18,7 @@ If you´re using an IDE you can run it from the file VegetableApplication.java.
 This project is using Swagger to document the API. To access it, run the application and copy the following into your web browser:
 
 > http://localhost:8080/swagger-ui/index.html
+
+Feel free to try out the API on postman when it´s running:
+
+>https://alexandraeriksson.postman.co/workspace/Alexandra-Eriksson's-Workspace~17974354-80ff-485d-8c6e-7874c274e364/collection/43534721-2f7673bf-0a9a-4ddf-9c55-bec4b5ebb66d?action=share&creator=43534721

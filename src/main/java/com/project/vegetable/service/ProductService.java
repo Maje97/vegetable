@@ -29,11 +29,11 @@ public class ProductService {
         return categoryRepository.save(category);
     }
 
-    public void deleteCategory(String name) {
-        if (!categoryRepository.existsByName(name)) {
-            throw new CategoryNotFoundException(name);
+    public void deleteCategory(Long id) {
+        if (!categoryRepository.existsById(id)) {
+            throw new CategoryNotFoundException("Unknown");
         }
-        categoryRepository.deleteByName(name);
+        categoryRepository.deleteById(id);
     }
 
     public List<Product> getAllProductsInCategory(String name) {

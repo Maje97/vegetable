@@ -25,8 +25,11 @@ public class ProductController {
 
     //GET
     @GetMapping
-    @Operation(summary = "Get all products")
-    public List<Product> getAllProducts() {
+    @Operation(summary = "Get all products, can filter by category. Ex: /api/products?category=Root vegetables")
+    public List<Product> getAllProducts(@RequestParam(required = false) String category) {
+        if (category != null) {
+            return productService.getAllProductsInCategory(category);
+        }
         return productService.getAllProducts();
     }
 
@@ -34,12 +37,6 @@ public class ProductController {
     @Operation(summary = "Get a product by its ID")
     public Product getOneProduct(@PathVariable Long id) {
         return productService.getProductById(id);
-    }
-
-    @GetMapping("/{name}")
-    @Operation(summary = "Get products by category name")
-    public List<Product> getProductsByCategory(@PathVariable String name) {
-        return productService.getAllProductsInCategory(name);
     }
 
     //POST

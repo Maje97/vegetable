@@ -30,10 +30,10 @@ public class CategoryController {
     }
 
     //DELETE
-    @DeleteMapping("/{name}")
-    @Operation(summary = "Delete category by name")
-    public ResponseEntity<Void> deleteCategory(@PathVariable String name) {
-        productService.deleteCategory(name);
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete category by id")
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+        productService.deleteCategory(id);
         return ResponseEntity.noContent().build();
     }
 }
