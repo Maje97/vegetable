@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class OrderRepositoryTest {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order order = new Order();
-        order.setTotalAmount(20.00);
+        order.setTotalAmount(BigDecimal.valueOf(20.00));
         order.setCustomer(customer);
         order.setOrderDate(orderDate);
         orderRepository.saveAndFlush(order);
@@ -48,7 +49,7 @@ public class OrderRepositoryTest {
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setQuantity(20);
-        orderItem.setPriceAtPurchase(1.00F);
+        orderItem.setPriceAtPurchase(BigDecimal.valueOf(1.00));
         orderItemRepository.save(orderItem);
 
         order.addOrderItem(orderItem);
@@ -57,7 +58,7 @@ public class OrderRepositoryTest {
 
         Optional<Order> found = orderRepository.findById(order.getId());
         assertThat(found).isPresent();
-        assertThat(found.get().getTotalAmount()).isEqualTo(20.00);
+        assertThat(found.get().getTotalAmount()).isEqualTo(BigDecimal.valueOf(20.00));
         assertThat(found.get().getOrderDate()).isEqualTo(orderDate);
     }
 
@@ -72,7 +73,7 @@ public class OrderRepositoryTest {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order order = new Order();
-        order.setTotalAmount(20.00);
+        order.setTotalAmount(BigDecimal.valueOf(20.00));
         order.setCustomer(customer);
         order.setOrderDate(orderDate);
         orderRepository.save(order);
@@ -81,7 +82,7 @@ public class OrderRepositoryTest {
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setQuantity(20);
-        orderItem.setPriceAtPurchase(1.00F);
+        orderItem.setPriceAtPurchase(BigDecimal.valueOf(1.00));
         orderItem.setId(new OrderItemId());
 
         order.addOrderItem(orderItem);
@@ -106,7 +107,7 @@ public class OrderRepositoryTest {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order order = new Order();
-        order.setTotalAmount(20.00);
+        order.setTotalAmount(BigDecimal.valueOf(20.00));
         order.setCustomer(customer);
         order.setOrderDate(orderDate);
         orderRepository.saveAndFlush(order);
@@ -115,7 +116,7 @@ public class OrderRepositoryTest {
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setQuantity(20);
-        orderItem.setPriceAtPurchase(1.00F);
+        orderItem.setPriceAtPurchase(BigDecimal.valueOf(1.00));
         orderItem.setId(new OrderItemId());
 
         order.addOrderItem(orderItem);

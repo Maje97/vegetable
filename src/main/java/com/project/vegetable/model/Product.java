@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -17,7 +19,7 @@ public class Product {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    private Float price;
+    private BigDecimal price;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
@@ -55,11 +57,11 @@ public class Product {
         this.description = description;
     }
 
-    public Float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

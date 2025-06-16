@@ -3,6 +3,8 @@ package com.project.vegetable.model;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "order_items")
 public class OrderItem {
@@ -12,7 +14,7 @@ public class OrderItem {
     private Integer quantity;
 
     @Column(name = "price_at_purchase")
-    private Float priceAtPurchase;
+    private BigDecimal priceAtPurchase;
 
     @MapsId("orderId")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,11 +48,11 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public Float getPriceAtPurchase() {
+    public BigDecimal getPriceAtPurchase() {
         return priceAtPurchase;
     }
 
-    public void setPriceAtPurchase(Float priceAtPurchase) {
+    public void setPriceAtPurchase(BigDecimal priceAtPurchase) {
         this.priceAtPurchase = priceAtPurchase;
     }
 
@@ -68,5 +70,9 @@ public class OrderItem {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Long getProductId() {
+        return product.getId();
     }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,7 +36,7 @@ public class OrderItemRepositoryTest {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order order = new Order();
-        order.setTotalAmount(20.00);
+        order.setTotalAmount(BigDecimal.valueOf(20.00));
         order.setCustomer(customer);
         order.setOrderDate(orderDate);
         orderRepository.save(order);
@@ -46,7 +47,7 @@ public class OrderItemRepositoryTest {
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setQuantity(20);
-        orderItem.setPriceAtPurchase(1.00F);
+        orderItem.setPriceAtPurchase(BigDecimal.valueOf(1.00));
 
         orderItemRepository.saveAndFlush(orderItem);
 
@@ -68,7 +69,7 @@ public class OrderItemRepositoryTest {
         LocalDateTime orderDate = LocalDateTime.now();
 
         Order order = new Order();
-        order.setTotalAmount(20.00);
+        order.setTotalAmount(BigDecimal.valueOf(20.00));
         order.setCustomer(customer);
         order.setOrderDate(orderDate);
         orderRepository.save(order);
@@ -79,7 +80,7 @@ public class OrderItemRepositoryTest {
         orderItem.setOrder(order);
         orderItem.setProduct(product);
         orderItem.setQuantity(20);
-        orderItem.setPriceAtPurchase(1.00F);
+        orderItem.setPriceAtPurchase(BigDecimal.valueOf(1.00F));
 
         orderItemRepository.saveAndFlush(orderItem);
 

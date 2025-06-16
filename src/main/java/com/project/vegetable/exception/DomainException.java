@@ -1,11 +1,16 @@
 package com.project.vegetable.exception;
 
-public class DomainException extends RuntimeException {
-    public DomainException(String message) {
-        super(message);
-    }
+import org.springframework.http.HttpStatus;
 
-    public DomainException(String message, Throwable cause) {
-        super(message, cause);
-    }
+public class DomainException extends RuntimeException {
+  private final HttpStatus status;
+
+  public DomainException(String message, HttpStatus status) {
+    super(message);
+    this.status = status;
+  }
+
+  public HttpStatus getStatus() {
+    return status;
+  }
 }

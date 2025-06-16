@@ -29,6 +29,13 @@ public class ProductService {
         return categoryRepository.save(category);
     }
 
+    public void deleteCategory(String name) {
+        if (!categoryRepository.existsByName(name)) {
+            throw new CategoryNotFoundException(name);
+        }
+        categoryRepository.deleteByName(name);
+    }
+
     public List<Product> getAllProductsInCategory(String name) {
         Category category = categoryRepository.findByName(name)
                 .orElseThrow(() -> new CategoryNotFoundException(name));
@@ -37,6 +44,23 @@ public class ProductService {
 
     public Product createProduct(Product product) {
         return productRepository.save(product);
+    }
+
+    public Product updateProduct(Long id, Product updatedProduct) {
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
+
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setDescription(updatedProduct.getDescription());
+        existingProduct.setStockQuantity(updatedProduct.getStockQuantity());
+        existingProduct.setCategory(updatedProduct.getCategory());
+
+        return productRepository.save(existingProduct);
+    }
+
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 
     public List<Product> getAllProducts() {

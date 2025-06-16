@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,7 +48,7 @@ public class CategoryRepositoryTest {
 
         Product product = new Product();
         product.setName("Void plant");
-        product.setPrice(1.2f);
+        product.setPrice(BigDecimal.valueOf(1.2));
         product.setStockQuantity(40);
         product.setCategory(category);
         productRepository.save(product);
@@ -68,13 +69,13 @@ public class CategoryRepositoryTest {
 
         Product product1 = new Product();
         product1.setName("Void plant");
-        product1.setPrice(1.2f);
+        product1.setPrice(BigDecimal.valueOf(1.2));
         product1.setStockQuantity(40);
         product1.setCategory(category);
 
         Product product2 = new Product();
         product2.setName("Void leaves");
-        product2.setPrice(1.0f);
+        product2.setPrice(BigDecimal.valueOf(1.0));
         product2.setStockQuantity(30);
         product2.setCategory(category);
 

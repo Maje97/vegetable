@@ -37,6 +37,41 @@ public class CustomerServiceTest {
     }
 
     @Test
+    void testUpdateCustomer() {
+        Long customerId = 1L;
+
+        Customer oldCustomer = new Customer();
+        oldCustomer.setId(customerId);
+        oldCustomer.setName("Alice Old");
+        oldCustomer.setAddress("Old 123, 45678 Old");
+        oldCustomer.setEmail("old@old.com");
+
+        Customer newCustomer = new Customer();
+        newCustomer.setName("Alice New");
+        newCustomer.setAddress("New 123, 45678 New");
+        newCustomer.setEmail("new@new.com");
+
+        when(customerRepository.findById(customerId)).thenReturn(Optional.of(oldCustomer));
+        when(customerRepository.save(any(Customer.class))).thenAnswer(i -> i.getArgument(0));
+
+        Customer result = customerService.updateCustomer(customerId, newCustomer);
+
+        assertEquals("Alice New", result.getName());
+        assertEquals("New 123, 45678 New", result.getAddress());
+        assertEquals("new@new.com", result.getEmail());
+
+        verify(customerRepository).findById(customerId);
+        verify(customerRepository).save(oldCustomer);
+    }
+
+    @Test
+    void testDeleteCustomer() {
+        Long id = 1L;
+        customerService.deleteCustomer(id);
+        verify(customerRepository, times(1)).deleteById(id);
+    }
+
+    @Test
     void testGetCustomerById_Success() {
         Customer customer = new Customer();
         customer.setId(1L);
